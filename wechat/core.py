@@ -27,12 +27,14 @@ def request_wechat_api(path, query_string='', data='', method='get'):
     if data and method == 'post':
         args.append(data)
 
+    # 日志输出url及参数信息
+    logger.info('START REQUEST[%s]: %s' % (method.upper(), url))
+    if data:
+        logger.info('***params***:%s', data)
+
     # 获取方法
     meth = getattr(requests, method)
     r = meth(*args)
-
-    # 输出请求相关日志
-    logger.info('[%s]%s', method.upper(), args)
 
     d = r.json()
 
