@@ -1,10 +1,12 @@
 # -*- coding: UTF-8 -*-
 
+import logging
 from functools import partial
 import requests
 
 from wechat.constants import WECHAT_API_DOMAIN_LIST
-from wechat.utils import logger
+
+logger = logging.getLogger(__name__)
 
 
 def get_api_domain():
