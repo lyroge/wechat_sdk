@@ -10,7 +10,7 @@ logger = logging.getLogger(__name__)
 class BaseHandler(object):
 
     def __call__(self, xml):
-        self._dispatch(xml)
+        return self._dispatch(xml)
 
     def _dispatch(self, xml):
         logger.info('post xml:%s', xml)
@@ -47,5 +47,40 @@ class BaseHandler(object):
     def on_location(self, xml_dict):
         pass
 
-    def on_link(self):
+    def on_link(self, xml_dict):
+        pass
+
+    def on_event(self, xml_dict):
+        """ 事件信息分发
+        """
+        event = xml_dict['Event'].lower()
+
+        meth = getattr(self, 'on_event_%s' % event, None)
+        r = meth(xml_dict)
+
+        return r
+
+    def on_event_subscribe(self, xml_dict):
+        """ 用户关注、包括扫码关注
+        """
+        pass
+
+    def on_event_unsubscribe(self, xml_dict):
+        """ 用户取消关注
+        """
+        pass
+
+    def on_event_scan(self, xml_dict):
+        """ 用户扫码进入场景
+        """
+        pass
+
+    def on_event_location(self, xml_dict):
+        """ 用户上报位置（服务号的位置信息）
+        """
+        pass
+
+    def on_event_click(self, xml_dict):
+        """ 用户点击菜单事件
+        """
         pass
