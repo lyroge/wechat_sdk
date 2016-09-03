@@ -14,6 +14,24 @@
 * 消息管理中的被动回复用户消息
 * 添加tornado代码的demo实例
 
+使用示例
+-----------
+
+处理消息回复类需要继承重写方法
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+::
+
+  class MessageHandler(BaseHandler):
+    def on_text(self, xml_dict):
+        from_user = xml_dict['FromUserName']
+        to_user = xml_dict['ToUserName']
+        create_time = xml_dict['CreateTime']
+        content = xml_dict['Content']
+
+        text_response = TextResponse(from_user=from_user, to_user=to_user, create_time=create_time, content=content)
+        return text_response
+
 下一步计划
 -------------
 1. 添加公众号基本功能demo实例
