@@ -27,7 +27,7 @@
     get_access_token_dict(APPID, APPSECRET)
 
 
-消息处理
+消息处理基类
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 继承基础的消息处理类BaseHandler， 重写对应方法即可。 如文本、图片、视频等对应的处理方法分别问on_text、on_image、on_video。
