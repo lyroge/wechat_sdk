@@ -17,20 +17,56 @@
 使用示例
 -----------
 
-处理消息回复类需要继承重写方法
+获取access_token方法
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+::  
+    
+    from wechat.base import get_access_token_dict
+    
+    get_access_token_dict(APPID, APPSECRET)
+
+
+消息处理
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+继承基础的消息处理类BaseHandler， 重写对应方法即可。 如文本、图片、视频等对应的处理方法分别问on_text、on_image、on_video。
+
+::
+
+    from wechat.message import *
+
+    class MessageHandler(BaseHandler):
+    
+      def on_text(self, xml_dict):
+      
+          from_user = xml_dict['FromUserName']
+          to_user = xml_dict['ToUserName']
+          create_time = xml_dict['CreateTime']
+          content = xml_dict['Content']
+  
+          text_response = TextResponse(from_user=from_user, to_user=to_user, create_time=create_time, content=content)
+          return text_response
+          
+
+自定义菜单接口
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 ::
 
-  class MessageHandler(BaseHandler):
-    def on_text(self, xml_dict):
-        from_user = xml_dict['FromUserName']
-        to_user = xml_dict['ToUserName']
-        create_time = xml_dict['CreateTime']
-        content = xml_dict['Content']
-
-        text_response = TextResponse(from_user=from_user, to_user=to_user, create_time=create_time, content=content)
-        return text_response
+    from wechat.menu.client import Client
+    
+    client = Client(access_token['access_token'])
+    
+    # 创建菜单
+    client.create_menu(data)
+    
+    # 获取菜单
+    client.get_menu()
+    
+    # 删除菜单
+    client.delete_menu()
+    
 
 下一步计划
 -------------
