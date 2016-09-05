@@ -45,7 +45,7 @@
           create_time = xml_dict['CreateTime']
           content = xml_dict['Content']
   
-          text_response = TextResponse(from_user=from_user, to_user=to_user, create_time=create_time, content=content)
+          text_response = TextResponse(from_user=to_user, to_user=from_user, create_time=create_time, content=content)
           return text_response
           
 
