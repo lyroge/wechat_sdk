@@ -73,7 +73,7 @@
 
 ::
 
-        nosetests 
+        nosetests --with-coverage --cover-package=wechat 
 
 
 下一步计划
