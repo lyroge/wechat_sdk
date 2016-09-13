@@ -1,0 +1,14 @@
+README.rst
+setup.py
+wechat/__init__.py
+wechat/base.py
+wechat/base_client.py
+wechat/constants.py
+wechat/core.py
+wechat/settings.py
+wechat/utils.py
+wechat2.egg-info/PKG-INFO
+wechat2.egg-info/SOURCES.txt
+wechat2.egg-info/dependency_links.txt
+wechat2.egg-info/top_level.txt
+wechat2.egg-info/zip-safe
