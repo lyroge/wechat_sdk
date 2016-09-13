@@ -25,7 +25,7 @@ def read(fname):
 
 NAME = "wechat2"
 
-PACKAGES = ["wechat", ]
+PACKAGES = ["wechat", "wechat.message", "wechat.menu"]
 
 DESCRIPTION = "Wechat Python SDK"
 

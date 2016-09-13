@@ -7,6 +7,11 @@ wechat/constants.py
 wechat/core.py
 wechat/settings.py
 wechat/utils.py
+wechat/menu/__init__.py
+wechat/menu/client.py
+wechat/message/__init__.py
+wechat/message/hander.py
+wechat/message/response.py
 wechat2.egg-info/PKG-INFO
 wechat2.egg-info/SOURCES.txt
 wechat2.egg-info/dependency_links.txt
